@@ -8,6 +8,7 @@ import { config } from './config/env.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import authRoutes from './routes/auth.routes.js';
 import employeeRoutes from './routes/employee.routes.js';
+import leaveRoutes from './routes/leave.routes.js';
 
 const app = express();
 
@@ -39,6 +40,7 @@ app.get('/health', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
+app.use('/api/leave', leaveRoutes);
 
 app.use(errorHandler);
 
