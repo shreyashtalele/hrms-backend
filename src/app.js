@@ -13,6 +13,9 @@ import attendanceRoutes from './routes/attendance.routes.js';
 import holidayRoutes from './routes/holiday.routes.js';
 import payrollRoutes from './routes/payroll.routes.js';
 
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from './docs/swagger.js';
+
 const app = express();
 
 app.use(helmet());
@@ -40,6 +43,11 @@ app.get('/health', (req, res) => {
         environment: config.NODE_ENV,
     });
 });
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec, {
+    customCss: '.swagger-ui .topbar { display: none }',
+    customSiteTitle: 'HRMS API Documentation',
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/employees', employeeRoutes);
