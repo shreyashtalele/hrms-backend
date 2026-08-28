@@ -6,6 +6,7 @@ import {
 } from '../services/payroll.service.js';
 import { STATUS } from '../utils/statusCodes.js';
 import { MESSAGES } from '../utils/messages.js';
+import { generateAndDownloadSlip } from '../services/pdf.service.js';
 
 export const run = async (req, res, next) => {
     try {
@@ -60,6 +61,19 @@ export const finalize = async (req, res, next) => {
             message: 'Payroll finalized successfully',
             data: payroll,
         });
+    } catch (error) {
+        next(error);
+    }
+};
+
+
+export const downloadSlip = async (req, res, next) => {
+    try {
+        const pdfBuffer = await generateAndDownloadSlip(req.params.id);
+
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename=salary-slip-${req.params.id}.pdf`);
+        res.send(pdfBuffer);
     } catch (error) {
         next(error);
     }
