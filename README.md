@@ -148,23 +148,11 @@ A production-ready Human Resource Management System (HRMS) backend API built wit
 | OFFICE_END_TIME | Office end time | 18:00 |
 | WEEKEND_DAYS | Weekend days | saturday,sunday |
 
-## Project Structure
+## 🚀 Live API
 
-hrms-backend/
-├── src/
-│   ├── config/          Configuration files
-│   ├── controllers/     Request handlers
-│   ├── docs/            Swagger documentation
-│   ├── middleware/      Auth, validation, error handling
-│   ├── models/          Database schemas
-│   ├── routes/          API routes
-│   ├── services/        Business logic
-│   ├── utils/           Helpers and constants
-│   └── validators/      Zod validation schemas
-├── .env.example         Environment variables template
-├── .gitignore           Git ignore rules
-├── package.json         Dependencies
-└── README.md            Documentation
+- **Base URL:** https://hrms-backend-aq7m.onrender.com
+- **Health Check:** https://hrms-backend-aq7m.onrender.com/health
+- **Swagger Docs:** https://hrms-backend-aq7m.onrender.com/api-docs
 
 ## Testing
 
